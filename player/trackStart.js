@@ -6,14 +6,14 @@ module.exports = (client, message, track) => {
         embed: {
             color: 'RED',
             author: { name: track.title },
-            footer: { text: 'ready as always!' },
+            footer: { text: 'Bereit!' },
             fields: [
-                { name: 'channel', value: track.author, inline: true },
-                { name: 'requested by', value: track.requestedBy.username, inline: true },
+                { name: 'YT-Channel', value: track.author, inline: true },
+                { name: 'Hinzugefügt von', value: track.requestedBy.username, inline: true },
                 { name: "Ping",value:client.ws.ping},
-                {name: "how many songs in the list:" , value:queue.tracks.length },
-                {name: "playing in channel:", value:message.member.voice.channel.name},
-                { name: 'length', value: client.player.createProgressBar(message, { timecodes: true }), }
+                {name: "Wiedergabeliste-Anzahl:" , value:queue.tracks.length },
+                {name: "VC:", value:message.member.voice.channel.name},
+                { name: 'Länge', value: client.player.createProgressBar(message, { timecodes: true }), }
             ],
             thumbnail: { url: track.thumbnail },
             timestamp: new Date(),

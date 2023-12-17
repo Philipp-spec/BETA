@@ -1,14 +1,13 @@
 module.exports = {
     name: 'nowplaying',
-    aliases: ['np'],
+    aliases: ['np', 'wiedergabe', 'aktuell'],
     category: 'Music',
     utilisation: '{prefix}nowplaying',
 
     execute(client, message) {
-        return message.channel.send("* permamently disabled*")
-        if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);
-        if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
+        
+        
+        if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - Aktuell keine Wiedergabe !`);
 
         const track = client.player.nowPlaying(message);
         const filters = [];
@@ -20,14 +19,14 @@ module.exports = {
             embed: {
                 color: 'RED',
                 author: { name: track.title },
-                footer: { text: 'ready as always' },
+                footer: { text: 'bereit!' },
                 fields: [
-                    { name: 'Channel', value: track.author, inline: true },
-                    { name: 'Requested by', value: track.requestedBy.username, inline: true },
-                    { name: 'Volume', value: client.player.getQueue(message).volume, inline: true },
-                    { name: 'Repeat mode', value: client.player.getQueue(message).repeatMode ? 'Yes' : 'No', inline: true },
-                    { name: 'Currently paused', value: client.player.getQueue(message).paused ? 'Yes' : 'No', inline: true },
-                    { name: 'Progress bar', value: client.player.createProgressBar(message, { timecodes: true }), inline: false }
+                    { name: 'YT-channel', value: track.author, inline: true },
+                    { name: 'Hinzugefügt von', value: track.requestedBy.username, inline: true },
+                    { name: 'Lautstärke (%)', value: client.player.getQueue(message).volume, inline: true },
+                    { name: 'Wiederholung', value: client.player.getQueue(message).repeatMode ? 'Ja' : 'Nein', inline: true },
+                    { name: 'Pausiert', value: client.player.getQueue(message).paused ? 'Ja' : 'nein', inline: true },
+                    { name: 'Wiedergabestand', value: client.player.createProgressBar(message, { timecodes: true }), inline: false }
                 ],
                 thumbnail: { url: track.thumbnail },
                 timestamp: new Date(),

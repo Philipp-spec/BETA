@@ -5,12 +5,12 @@ module.exports = {
     utilisation: '{prefix}uptime',
 
     execute (client,message)  {
-    const moment = require("moment"); require("moment-duration-format"); const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+    const moment = require("moment"); require("moment-duration-format"); const duration = moment.duration(client.uptime).format(" D [Tage], H [Stunden], m [Minuten], s [Sekunden]");
     message.channel.send({
         embed: {
             color: 'GREEN',
             author: { name: "Uptime" },
             fields: [
-                {name: `up since:`,  value: duration}
+                {name: `Im Betrieb seit:`,  value: duration}
             ],
     }})}}

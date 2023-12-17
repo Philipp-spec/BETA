@@ -2,7 +2,7 @@ module.exports = {
     name: 'help',
     aliases: ['h'],
     category: 'Core',
-    utilisation: '{prefix}help <command name>',
+    utilisation: '{prefix}help <Kommando>',
 
     execute(client, message, args) {
         if (!args[0]) {
@@ -12,35 +12,35 @@ module.exports = {
             message.channel.send({
                 embed: {
                     color: 'ORANGE',
-                    author: { name: 'Help pannel' },
-                    footer: { text: 'ready as always' },
+                    author: { name: 'Kommandos' },
+                    footer: { text: 'Bereit!' },
                     fields: [
                         { name: 'Infos', value: infos },
-                        { name: 'Music', value: music },
-                        { name: 'Music Filters', value: client.filters.map((x) => '`' + x + '`').join(', ') },
+                        { name: 'Musik', value: music },
+                        { name: 'Musik Filter', value: client.filters.map((x) => '`' + x + '`').join(', ') },
                     ],
                     timestamp: new Date(),
-                    description: `**NOTE:** If you're looking for the mainbot's commands, use \`!commands\` instead of \`!help\`.\n\nTo use filters, ${client.config.discord.prefix}filter (the filter). Example : ${client.config.discord.prefix}filter 8D.`,
+                    description: `Command-Panel`,
                 },
             });
         } else {
             const command = message.client.commands.get(args.join(" ").toLowerCase()) || message.client.commands.find(x => x.aliases && x.aliases.includes(args.join(" ").toLowerCase()));
 
-            if (!command) return message.channel.send(`${client.emotes.error} - I did not find this command !`);
+            if (!command) return message.channel.send(`${client.emotes.error} - Nicht gefunden!`);
 
             message.channel.send({
                 embed: {
                     color: 'ORANGE',
-                    author: { name: 'Help pannel' },
-                    footer: { text: 'ready as always' },
+                    author: { name: 'Kommando-Panel' },
+                    footer: { text: 'Bereit!' },
                     fields: [
-                        { name: 'Name', value: command.name, inline: true },
-                        { name: 'Category', value: command.category, inline: true },
+                        { name: 'Bezeichnung', value: command.name, inline: true },
+                        { name: '', value: command.category, inline: true },
                         { name: 'Alias(es)', value: command.aliases.length < 1 ? 'None' : command.aliases.join(', '), inline: true },
-                        { name: 'Utilisation', value: command.utilisation.replace('{prefix}', client.config.discord.prefix), inline: true },
+                        { name: 'Verwendung', value: command.utilisation.replace('{prefix}', client.config.discord.prefix), inline: true },
                     ],
                     timestamp: new Date(),
-                    description: 'Find information on the command provided.\nMandatory arguments `[]`, optional arguments `<>`.',
+                    description: 'Informationen zu den einzelnen Befehlen',
                 }
             });
         };

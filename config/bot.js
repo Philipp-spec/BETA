@@ -7,12 +7,12 @@ module.exports = {
         success: ':white_check_mark:'
     },
 
-    mongo: 'insert MongoDB URI here',
+   
 
     discord: {
         token: 'insert token here',
         prefix: '!',
-        activity: 'TSC'
+        activity: 'https://github.com/Philipp-spec/BETA'
     },
 
     filters: ['8D', 'gate', 'haas', 'phaser', 'treble', 'tremolo', 'vibrato', 'reverse', 'karaoke', 'flanger', 'mcompand', 'pulsator', 'subboost', 'bassboost', 'vaporwave', 'nightcore', 'normalizer', 'surrounding']

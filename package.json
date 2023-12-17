@@ -1,9 +1,6 @@
 {
-  "name": "TSC-assistant",
+  "name": "BETA",
   "version": "0.0.1",
-  "homepage": "https://www.techsupportcentral.cf",
-  "repository": "https://github.com/TechSupportCentral/TSCBot-assistant",
-  "bugs": "https://github.com/TechSupportCentral/TSCBot-assistant/issues",
   "dependencies": {
     "@derhuerst/http-basic": "^8.2.1",
     "@discordjs/collection": "^0.1.6",
